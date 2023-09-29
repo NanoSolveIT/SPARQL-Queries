@@ -1,0 +1,7 @@
+SELECT DISTINCT ?type (COUNT(?s) AS ?count) WHERE {
+  ?s a ?type . 
+  FILTER (!CONTAINS(str(?type), "07/owl"))
+  FILTER (!CONTAINS(str(?type), "openlink"))
+  FILTER (!CONTAINS(str(?type), "rdf-syntax"))
+} GROUP BY ?type
+  ORDER BY DESC(?count)
